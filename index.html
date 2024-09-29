@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkin Park Album Sales</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> <!-- Plotly.js -->
+    <script src="https://cdn.jsdelivr.net/npm/tone/build/Tone.js"></script> <!-- Tone.js -->
+</head>
+<body>
+    <div class="App">
+        <header class="App-header">
+            <img src="linkin.png" class="App-logo" alt="logo">
+            <h1 class='title'>Linkin Park</h1>
+        </header>
+    </div>
+    <div class='plot-container' id="plot"></div>
+    <div class='repro-container'>
+        <img src="repro.jpeg" class="repro-logo" alt="logo">
+        <button id="playButton" class="play-button">Reproducir canción</button>
+    </div>
+
+    <audio id="audioPlayer" src="numb.mp3" preload="auto"></audio> <!-- Audio player -->
+    
+    <script>
+        const playButton = document.getElementById('playButton');
+        const audioPlayer = document.getElementById('audioPlayer');
+        let isPlaying = false;
+
+        playButton.addEventListener('click', async () => {
+            if (!isPlaying) {
+                await Tone.start(); // Start the Tone.js context
+                audioPlayer.play();
+                isPlaying = true;
+                playButton.textContent = "Reproduciendo...";
+
+                audioPlayer.onended = () => {
+                    isPlaying = false;
+                    playButton.textContent = "Reproducir canción";
+                };
+            } else {
+                console.log("La canción ya está reproduciéndose");
+            }
+        });
+
+        // Plotly chart data
+        const data = [
+            {
+                x: ["Hybrid Theory", "Meteora", "Minutes to Midnight", "A Thousand Suns", "Living Things", "The Hunting Party", "One More Light"],
+                y: [10500000, 8500000, 5000000, 900000, 750000, 550000, 100000],
+                mode: 'lines+markers',
+                type: 'scatter',
+                marker: { color: 'red' },
+            },
+            {
+                x: ["Hybrid Theory", "Meteora", "Minutes to Midnight", "A Thousand Suns", "Living Things", "The Hunting Party", "One More Light"],
+                y: [10500000, 8500000, 5000000, 900000, 750000, 550000, 100000],
+                type: 'bar',
+            }
+        ];
+
+        const layout = {
+            title: 'Ventas de los álbumes más vendidos de Linkin Park',
+            width: 1000,
+            height: 700,
+        };
+
+        // Render the plot
+        Plotly.newPlot('plot', data, layout);
+    </script>
+</body>
+</html>
