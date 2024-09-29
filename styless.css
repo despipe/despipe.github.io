@@ -1,4 +1,4 @@
-body {
+.body {
     font-family: Arial, sans-serif;
     background-color: #121212;
     color: white;
@@ -9,13 +9,15 @@ body {
 
 .App-header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .App-logo {
-    width: 200px;
+    width: 5vmax;
+    margin-right: 20px;
 }
 
 .title {
@@ -27,7 +29,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .repro-container {
@@ -37,17 +39,18 @@ body {
 }
 
 .repro-logo {
-    width: 200px;
+    width: 150px;
 }
 
 .play-button {
     background-color: #1DB954;
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
     color: white;
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
+    margin-top: 10px;
 }
 
 .play-button:disabled {

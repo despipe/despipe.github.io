@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linkin Park Album Sales</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> <!-- Plotly.js -->
-    <script src="https://cdn.jsdelivr.net/npm/tone/build/Tone.js"></script> <!-- Tone.js -->
+    <title>Linkin Park</title>
+    <link rel="stylesheet" href="styless.css"> 
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/tone/build/Tone.js"></script> 
 </head>
 <body>
     <div class="App">
@@ -21,7 +21,7 @@
         <button id="playButton" class="play-button">Reproducir canción</button>
     </div>
 
-    <audio id="audioPlayer" src="numb.mp3" preload="auto"></audio> <!-- Audio player -->
+    <audio id="audioPlayer" src="numb.mp3" preload="auto"></audio> 
     
     <script>
         const playButton = document.getElementById('playButton');
@@ -30,13 +30,15 @@
 
         playButton.addEventListener('click', async () => {
             if (!isPlaying) {
-                await Tone.start(); // Start the Tone.js context
+                await Tone.start();
                 audioPlayer.play();
                 isPlaying = true;
                 playButton.textContent = "Reproduciendo...";
+                playButton.disabled = true;
 
                 audioPlayer.onended = () => {
                     isPlaying = false;
+                    playButton.disabled = false;
                     playButton.textContent = "Reproducir canción";
                 };
             } else {
@@ -44,7 +46,6 @@
             }
         });
 
-        // Plotly chart data
         const data = [
             {
                 x: ["Hybrid Theory", "Meteora", "Minutes to Midnight", "A Thousand Suns", "Living Things", "The Hunting Party", "One More Light"],
@@ -62,11 +63,13 @@
 
         const layout = {
             title: 'Ventas de los álbumes más vendidos de Linkin Park',
-            width: 1000,
+            width: 1400,
             height: 700,
+            font: {
+                size: 15,
+            },
         };
 
-        // Render the plot
         Plotly.newPlot('plot', data, layout);
     </script>
 </body>
