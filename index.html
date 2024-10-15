@@ -1,76 +1,28 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linkin Park</title>
-    <link rel="stylesheet" href="styless.css"> 
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/tone/build/Tone.js"></script> 
+    <title>Precipitaciones</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> <!-- AQUI SE IMPORTA LA LIBRERIA PLOTLY.JS -->
 </head>
 <body>
-    <div class="App">
-        <header class="App-header">
-            <img src="linkin.png" class="App-logo" alt="logo">
-            <h1 class='title'>Linkin Park</h1>
-        </header>
+    <nav class="navbar">
+        <h1>Variación de las Precipitaciones en Chile</h1>
+    </nav>
+    <div class="flex-column">
+        <div class="flex-row">
+             <div class="imagen">
+                <img src="biobio2.png" alt="Chile">
+            </div>
+            <div class="graph">
+                <div id="linechart 1"></div>
+            </div>
+        </div>
     </div>
-    <div class='plot-container' id="plot"></div>
-    <div class='repro-container'>
-        <img src="repro.jpeg" class="repro-logo" alt="logo">
-        <button id="playButton" class="play-button">Reproducir canción</button>
+    <script type="module" src="main.js"></script>
+    <div class="footer">
+        <p>Desarrollado por: Felipe Márquez, Valentina Massé y Felipe Verdugo</p>
     </div>
-
-    <audio id="audioPlayer" src="numb.mp3" preload="auto"></audio> 
-    
-    <script>
-        const playButton = document.getElementById('playButton');
-        const audioPlayer = document.getElementById('audioPlayer');
-        let isPlaying = false;
-
-        playButton.addEventListener('click', async () => {
-            if (!isPlaying) {
-                await Tone.start();
-                audioPlayer.play();
-                isPlaying = true;
-                playButton.textContent = "Reproduciendo...";
-                playButton.disabled = true;
-
-                audioPlayer.onended = () => {
-                    isPlaying = false;
-                    playButton.disabled = false;
-                    playButton.textContent = "Reproducir canción";
-                };
-            } else {
-                console.log("La canción ya está reproduciéndose");
-            }
-        });
-
-        const data = [
-            {
-                x: ["Hybrid Theory", "Meteora", "Minutes to Midnight", "A Thousand Suns", "Living Things", "The Hunting Party", "One More Light"],
-                y: [10500000, 8500000, 5000000, 900000, 750000, 550000, 100000],
-                mode: 'lines+markers',
-                type: 'scatter',
-                marker: { color: 'red' },
-            },
-            {
-                x: ["Hybrid Theory", "Meteora", "Minutes to Midnight", "A Thousand Suns", "Living Things", "The Hunting Party", "One More Light"],
-                y: [10500000, 8500000, 5000000, 900000, 750000, 550000, 100000],
-                type: 'bar',
-            }
-        ];
-
-        const layout = {
-            title: 'Ventas de los álbumes más vendidos de Linkin Park',
-            width: 1400,
-            height: 700,
-            font: {
-                size: 15,
-            },
-        };
-
-        Plotly.newPlot('plot', data, layout);
-    </script>
 </body>
 </html>
