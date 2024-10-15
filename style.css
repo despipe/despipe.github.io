@@ -1,6 +1,6 @@
 .graph {   
     border: 1px solid #747474;
-    flex: 6;
+    flex: 5;
 }
 
 .flex-row {
@@ -29,6 +29,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 2%;
 }
 
 .navbar h1 {
