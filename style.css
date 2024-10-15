@@ -8,9 +8,19 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 85vh;
+    height: 80vh;
     padding-left: 7%;
     padding-right: 7%;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 10vh;
+    font-size: x-large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar {
