@@ -36,8 +36,8 @@ var data = [RioAconcagua, RioMaipo, RioMaule, RioBioBio];
 
 var layout = {
     title: 'Promedio de precipitaciones mensuales por año',
-    xaxis: { title: 'Año' },
-    yaxis: { title: 'mm' },
+    xaxis: { title: 'Tiempo (Año)' },
+    yaxis: { title: 'Precipitación (mm)' },
     showlegend: false,
     autosize: true,
     
