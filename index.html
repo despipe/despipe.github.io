@@ -4,26 +4,30 @@
     <meta charset="UTF-8">
     <title>Precipitaciones</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> <!-- AQUI SE IMPORTA LA LIBRERIA PLOTLY.JS -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
 </head>
 <body>
     <nav class="navbar">
-        <h1>Variación de Precipitación en las cuencas más importantes de Chile</h1>
+        <h1>Como la sequía afecta a los ríos de Chile
+        </h1>
     </nav>
+    <div class="context">
+        <p>La <b>sequía</b> es un fenómeno climático que afecta a la mayoría de los países del mundo, incluido Chile. En este país, la sequía ha afectado a los ríos, <b>disminuyendo la cantidad de agua que fluye en  ellos</b>. En este gráfico, se muestra la cantidad de precipitaciones que han caído en los ríos Aconcagua, Maipo, Maule y Biobío en los últimos años.<b> ¿No nos crees? Escucha</b>, haz clic en cada río para ver cómo ha variado la cantidad de precipitaciones en él a lo largo del tiempo.</p>
+    </div>
     <div class="flex-row">
         <div class="imagen">
-            <img  id="mapa-chile" src="biobio4.png" alt="Chile">
-            <div id="marca-aconcagua" class="marca" style="top: 38.7%; left: 15.5%; background-color: #38b6ff; box-shadow: 0 0 10px black;"></div>
+            <img  id="mapa-chile" src="imagen-chile.png" alt="Chile">
+            <div id="marca-aconcagua" class="marca" style="top: 39%; left: 15.5%; background-color: #38b6ff; box-shadow: 0 0 10px black;"></div>
             <div id="marca-maipo" class="marca" style="top: 41.5%; left: 15.6%;background-color: #db92c6; box-shadow: 0 0 10px black;"></div>
             <div id="marca-maule" class="marca" style="top: 46.5%; left: 15%; background-color: #9b6336; box-shadow: 0 0 10px black;"></div>
             <div id="marca-biobio" class="marca" style="top: 50%; left: 14%;background-color: #0a8449;box-shadow: 0 0 10px black;"></div>
-            <div id="marca-todo" class="marca mostrar-todo" style="top: 30%; left: 15.5%;" title="Mostrar todos"></div>
+            <div id="marca-todo" class="marca mostrar-todo" style="top: 31.5%; left: 15.5%;" title="Mostrar todos"></div>
         </img>
         
         </div>
         <div class="graph">
             <div id="linechart1"></div>
-    <audio id="audio" src="lluvia-fuerte.mp3" loop></audio>
+            <audio id="audio" src="lluvia-fuerte.mp3" loop></audio>
     <script>
         var RioAconcagua = {
             x: [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,2011,2012,2013,2014,2015,2016,2017,2018],
@@ -60,7 +64,7 @@
         var data = [RioAconcagua, RioMaipo, RioMaule, RioBioBio];
 
         var layout = {
-            title: 'Promedio de precipitaciones por año',
+            title: 'Variación en el promedio de precipitaciones en las cuencas más importantes de Chile',
             xaxis: { title: 'Tiempo (Año)' },
             yaxis: { title: 'Precipitación (mm)' },
             showlegend: false,
@@ -79,15 +83,15 @@
 
         document.getElementById('linechart1').on('plotly_hover', function(eventdata){
             var point = eventdata.points[0];
-            var volume = point.y / 200; // Ajusta el divisor según el rango de tus datos para normalizar el volumen
-            gainNode.gain.setTargetAtTime(Math.min(1, Math.max(0, volume)), audioContext.currentTime, 0.1); // Ajusta el tiempo de transición
+            var volume = point.y / 200; 
+            gainNode.gain.setTargetAtTime(Math.min(1, Math.max(0, volume)), audioContext.currentTime, 0.1); 
             audio.play();
         });
 
         document.getElementById('linechart1').on('plotly_unhover', function(){
-            gainNode.gain.setTargetAtTime(0, audioContext.currentTime, 0.1); // Ajusta el tiempo de transición
+            gainNode.gain.setTargetAtTime(0, audioContext.currentTime, 0.1); 
             audio.pause();
-            audio.currentTime = 0; // Reinicia el audio
+            audio.currentTime = 0; 
         });
 
         const datosRios = {
@@ -98,7 +102,6 @@
         "marca-todo": [RioAconcagua, RioMaipo, RioMaule, RioBioBio] 
     };
 
-    // Asignar un evento de clic a cada marca
     document.querySelectorAll('.marca').forEach(marca => {
         marca.addEventListener('click', function() {
             const datosFiltrados = datosRios[this.id];
@@ -107,6 +110,10 @@
     });
     </script>
         </div>
+    </div>
+
+    <div class="source">
+        <p>Fuente: CR2 (Center for Climate and Resilience Research)</p>
     </div>
 
     <script type="module" src="main.js"></script>
