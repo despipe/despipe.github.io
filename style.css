@@ -90,14 +90,14 @@ body {
     margin-left: 10px;
     margin-right: 10px;
     padding: 10px;
-    margin-bottom: -115px;
+    margin-bottom: -115px !important;
 }
 
 .source {
-    font-size: small;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    color: #747474;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: small !important;
+    justify-content: center !important;
+    align-items: center !important;
+    display: flex !important;
+    color: #747474 !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
