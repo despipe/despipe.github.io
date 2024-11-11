@@ -101,3 +101,12 @@ body {
     color: #747474 !important;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
+
+.disclaimer {
+    font-size: small !important;
+    justify-content: center !important;
+    align-items: center !important;
+    display: flex !important;
+    color: #747474 !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
